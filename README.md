@@ -137,11 +137,6 @@ COGNODB_PASSWORD=c537f80f72e01996f42374fd2e0fd656
 ## Running locally
 
 ```bash
-# Add these Environment variables in .env file
-COGNODB_URI="bolt+s://db-850242a0.databases.cognodb.com"
-COGNODB_USER="cognodb"
-COGNODB_PASSWORD="c537f80f72e01996f42374fd2e0fd656"
-
 # 1. Install dependencies
 npm install
 
@@ -169,7 +164,7 @@ The seed script pushes the curated dataset (~30 movies, directors, actors, genre
 ## Assignment submission details
 
 - **Repository:** [\[Movie Recommendations - CognoDB\]](https://github.com/Araf-Khatri/Movie-Recommendations---CognoDB-Neo4j)
-- **Demo:** https://movie-recommendation-araf-cognodb.netlify.app/
+- **Demo:** https://movie-recommendation-araf-cognodb.netlify.app
 - **Contact:** hr@wexa.ai — subject line: `CognoDB Assignment 2 – Araf Khatri`
 
 The CognoDB instance used for this demo will remain running for evaluation.
