@@ -3,7 +3,7 @@ import { createServerFn } from "@tanstack/react-start";
 import type { MovieQuery, UserActivity } from "./types";
 
 export const listMoviesFn = createServerFn({ method: "GET" })
-  .inputValidator((data: MovieQuery) => data ?? {})
+  .validator((data: MovieQuery) => data ?? {})
   .handler(async ({ data }) => {
     const { rankMovies } = await import("./query-utils");
     const { fetchAllMovies } = await import("./cognodb.server");
@@ -11,7 +11,7 @@ export const listMoviesFn = createServerFn({ method: "GET" })
   });
 
 export const popularMoviesFn = createServerFn({ method: "GET" })
-  .inputValidator((data: { limit?: number }) => data ?? {})
+  .validator((data: { limit?: number }) => data ?? {})
   .handler(async ({ data }) => {
     const { fetchAllMovies } = await import("./cognodb.server");
     const movies = await fetchAllMovies();
@@ -24,14 +24,14 @@ export const trendingMoviesFn = createServerFn({ method: "GET" }).handler(async 
 });
 
 export const getMovieFn = createServerFn({ method: "GET" })
-  .inputValidator((data: { id: string }) => data)
+  .validator((data: { id: string }) => data)
   .handler(async ({ data }) => {
     const { fetchMovie } = await import("./cognodb.server");
     return fetchMovie(data.id);
   });
 
 export const searchMoviesFn = createServerFn({ method: "GET" })
-  .inputValidator((data: { q: string }) => data)
+  .validator((data: { q: string }) => data)
   .handler(async ({ data }) => {
     const q = data.q.trim();
     if (!q) return [];
@@ -42,14 +42,14 @@ export const searchMoviesFn = createServerFn({ method: "GET" })
   });
 
 export const relatedMoviesFn = createServerFn({ method: "GET" })
-  .inputValidator((data: { id: string; limit?: number }) => data)
+  .validator((data: { id: string; limit?: number }) => data)
   .handler(async ({ data }) => {
     const { fetchRelated } = await import("./cognodb.server");
     return fetchRelated(data.id, data.limit ?? 6);
   });
 
 export const recommendationsFn = createServerFn({ method: "POST" })
-  .inputValidator((data: { activity: UserActivity; limit?: number }) => data)
+  .validator((data: { activity: UserActivity; limit?: number }) => data)
   .handler(async ({ data }) => {
     const { buildRecommendations } = await import("./query-utils");
     const { fetchAllMovies } = await import("./cognodb.server");
@@ -57,7 +57,7 @@ export const recommendationsFn = createServerFn({ method: "POST" })
   });
 
 export const recommendationGroupsFn = createServerFn({ method: "POST" })
-  .inputValidator((data: { activity: UserActivity }) => data)
+  .validator((data: { activity: UserActivity }) => data)
   .handler(async ({ data }) => {
     const { buildRecommendationGroups } = await import("./query-utils");
     const { fetchAllMovies } = await import("./cognodb.server");
@@ -65,14 +65,14 @@ export const recommendationGroupsFn = createServerFn({ method: "POST" })
   });
 
 export const getActivityFn = createServerFn({ method: "POST" })
-  .inputValidator((data: { email: string }) => data)
+  .validator((data: { email: string }) => data)
   .handler(async ({ data }) => {
     const { fetchActivity } = await import("./cognodb.server");
     return fetchActivity(data.email);
   });
 
 export const toggleActivityFn = createServerFn({ method: "POST" })
-  .inputValidator((data: { email: string; movieId: string; kind: "watched" | "liked" }) => data)
+  .validator((data: { email: string; movieId: string; kind: "watched" | "liked" }) => data)
   .handler(async ({ data }) => {
     const { toggleActivity } = await import("./cognodb.server");
     return toggleActivity(data.email, data.movieId, data.kind);
