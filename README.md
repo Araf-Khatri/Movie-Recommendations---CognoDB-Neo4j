@@ -163,8 +163,7 @@ The seed script pushes the curated dataset (~30 movies, directors, actors, genre
 
 ## Assignment submission details
 
-- **Repository:** [\[Movie Recommendations - CognoDB\]](https://github.com/Araf-Khatri/Movie-Recommendations---CognoDB-Neo4j)
+- **Repository:** [Movie Recommendations - CognoDB](https://github.com/Araf-Khatri/Movie-Recommendations---CognoDB-Neo4j)
 - **Demo:** https://movie-recommendation-araf-cognodb.netlify.app
-- **Contact:** hr@wexa.ai — subject line: `CognoDB Assignment 2 – Araf Khatri`
 
 The CognoDB instance used for this demo will remain running for evaluation.
